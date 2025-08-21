@@ -5,14 +5,18 @@ public class CC {
         String stop = "bye";
         System.out.println("Hello from " + ChatBotName);
         System.out.println("What can I do for you?");
+        TaskList tasks = new TaskList();
 
         Scanner scanner = new Scanner(System.in);
         String temp = null;
-        while(true){
+        while(true) {
             temp = scanner.nextLine();
-            if(!temp.equals(stop)) {
-                System.out.println(temp);
+            if (!temp.equals(stop) && !temp.equals("list")) {
+                tasks.addTask(temp);
+                System.out.println("added: " + temp);
                 temp = null;
+            }else if(temp.equals("list")){
+                System.out.println(tasks.toString());
             }else{
                 break;
             }
