@@ -30,6 +30,10 @@ public class TaskList {
         return tasks.get(index);
     }
 
+    public void deleteTask(int index){
+        tasks.remove(index);
+    }
+
     @Override
     public String toString(){
         String temp = "";
