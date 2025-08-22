@@ -9,29 +9,55 @@ public class CC {
 
         Scanner scanner = new Scanner(System.in);
         String temp = null;
+
         while(true) {
             temp = scanner.nextLine().trim();
-            String[] parts = temp.split("\\s+", 2);
 
-            if (!parts[0].equals(stop)
-                    && !parts[0].equals("list")
-                    && !parts[0].equals("mark")
-                    && !parts[0].equals("unmark")
+            if (!temp.startsWith(stop)
+                    && !temp.startsWith("list")
+                    && !temp.startsWith("mark")
+                    && !temp.startsWith("unmark")
             ) {
-                tasks.addTask(new Task(temp));
-                System.out.println("added: " + temp);
-                temp = null;
+                if(temp.startsWith("todo")) {
+                    //System.out.println("adding todo");
+                    String details = temp.substring(5);
+                    ToDos todo = new ToDos(details);
+                    tasks.addTask(todo);
+                    System.out.println("added: " + todo.toString() + "\n"
+                            + tasks.getSize() + " task now");
+                    temp = null;
+                }
 
-            }else if(parts[0].equals("list")){
+                if(temp.startsWith("deadline")) {
+                    String[] details = temp.substring(9).split("/");
+                    Deadlines deadline = new Deadlines(details[0], details[1]);
+                    tasks.addTask(deadline);
+                    System.out.println("added: " + deadline.toString() + "\n"
+                            + tasks.getSize() + " task now");
+                    temp = null;
+                }
+
+                if(temp.startsWith("event")) {
+                    String[] details = temp.substring(6).split("/");
+                    Events event = new Events(details[0], details[1], details[2]);
+                    tasks.addTask(event);
+                    System.out.println("added: " + event.toString() + "\n"
+                            + tasks.getSize() + " task now");
+                    temp = null;
+                }
+
+
+
+            }else if(temp.startsWith("list")){
                 System.out.println(tasks.toString());
 
-            }else if(parts[0].equals("mark")){
-                int index = Integer.parseInt(parts[1]);
+            }else if(temp.startsWith("mark")){
+                int index = Integer.parseInt(temp.substring(5));
                 tasks.MarkAsDone(index-1);
                 System.out.println("Nice! You got it boss: \n" + tasks.getTask(index-1).toString());
 
-            }else if(parts[0].equals("unmark")){
-                int index = Integer.parseInt(parts[1]);
+            }else if(temp.startsWith("unmark")){
+                int index = Integer.parseInt(temp.substring(7));
                 tasks.MarkAsUndone(index-1);
                 System.out.println("Fine get it done soon: \n" + tasks.getTask(index-1).toString());
 
@@ -40,6 +66,6 @@ public class CC {
 
             }
         }
-        System.out.println("Bye. Hope to see you again soon");
+        System.out.println("Don't come back again");
     }
 }

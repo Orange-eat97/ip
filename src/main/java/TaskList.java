@@ -11,6 +11,7 @@ public class TaskList {
     public void addTask(Task task){
         tasks.add(task);
         counter += 1;
+
     }
 
     public void MarkAsDone(int index){
