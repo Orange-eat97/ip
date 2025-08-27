@@ -37,7 +37,7 @@ public class TaskList {
     @Override
     public String toString(){
         String temp = "";
-        for(int i=0; i<counter; i++){
+        for(int i=0; i<tasks.size(); i++){
             temp += i+1 +". " + tasks.get(i).toString() + "\n";
         }
         return temp;
