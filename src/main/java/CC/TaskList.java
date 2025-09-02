@@ -10,29 +10,29 @@ public class TaskList {
         tasks =new ArrayList<>(100);
     }
 
-    public void addTask(Task task){
+    public void addTask(Task task){     //adds a task into a tasklist
         tasks.add(task);
         counter += 1;
 
     }
 
-    public void MarkAsDone(int index){
+    public void MarkAsDone(int index){  //asks task to mark done
         tasks.get(index).MarkAsDone();
     }
 
-    public void MarkAsUndone(int index){
+    public void MarkAsUndone(int index){    //asks task to mark undone
         tasks.get(index).MarkAsUndone();
     }
 
-    public int getSize(){
+    public int getSize(){   //returns size of the list
         return tasks.size();
     }
 
-    public Task getTask(int index){
+    public Task getTask(int index){     //returns a certain task at an index
         return tasks.get(index);
     }
 
-    public void deleteTask(int index){
+    public void deleteTask(int index){  //returns nth. removes a task
         tasks.remove(index);
     }
 

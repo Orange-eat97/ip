@@ -11,7 +11,7 @@ public class Storage {
         FILE_PATH = FILE_PATH;
     }
 
-    public void ensureDataFileExists(){
+    public void ensureDataFileExists(){     //checks that the Data file exists,if not, create one
         File folder = new File("data");
         if(!folder.exists()){
             folder.mkdir();
@@ -27,7 +27,7 @@ public class Storage {
         }
     }
 
-    public static void saveTaskToFile(Task task){
+    public static void saveTaskToFile(Task task){       //writes a task into Data
         try{
             FileWriter writer = new FileWriter(FILE_PATH, true);
             writer.write(task.toString() + System.lineSeparator());

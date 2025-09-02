@@ -49,7 +49,7 @@ public class Parser {
         return details;
     }
 
-    public int handleMarkAndDelete(int x, String s){
+    public int handleMarkAndDelete(int x, String s){        //controls getting the index for the other three tasks
         int index = 0;
         if(x == 5){
             index = Integer.parseInt(s.substring(5).trim());
