@@ -7,23 +7,23 @@ public class Parser {
     private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list", "delete"};
 
     public int getAction(String s) {    //controls how we parse the command
-        if (Arrays.stream(commands).noneMatch(x->s.startsWith(x))){
+        if (Arrays.stream(commands).noneMatch(x->s.startsWith(x))) {
             return -1;
-        }else if (s.startsWith("todo")){
+        } else if (s.startsWith("todo")) {
             return 1;
-        }else if (s.startsWith("deadline")){
+        } else if (s.startsWith("deadline")) {
             return 2;
-        }else if (s.startsWith("event")){
+        } else if (s.startsWith("event")) {
             return 3;
-        }else if (s.startsWith("list")){
+        } else if (s.startsWith("list")) {
             return 4;
-        }else if (s.startsWith("mark")){
+        } else if (s.startsWith("mark")) {
             return 5;
-        }else if (s.startsWith("unmark")){
+        } else if (s.startsWith("unmark")) {
             return 6;
-        }else if (s.startsWith("delete")){
+        } else if (s.startsWith("delete")) {
             return 7;
-        }else{
+        } else {
             return 0;
         }
     }
@@ -49,13 +49,13 @@ public class Parser {
         return details;
     }
 
-    public int handleMarkAndDelete(int x, String s){        //controls getting the index for the other three tasks
+    public int handleMarkAndDelete(int x, String s) {        //controls getting the index for the other three tasks
         int index = 0;
-        if(x == 5){
+        if(x == 5) {
             index = Integer.parseInt(s.substring(5).trim());
-        }else if(x == 6){
+        } else if(x == 6) {
             index = Integer.parseInt(s.substring(7).trim());
-        }else if(x == 7){
+        } else if(x == 7) {
             index = Integer.parseInt(s.substring(6).trim());
         }
         return index;

@@ -12,22 +12,22 @@ public class Ui {
    private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list"};
    private static final String FILE_PATH = "data" + File.separator + "duke.txt";
 
-   private static void saveTaskToFile(Task task){
-        try{
+   private static void saveTaskToFile(Task task) {
+        try {
             FileWriter writer = new FileWriter(FILE_PATH, true);
             writer.write(task.toString() + System.lineSeparator());
             writer.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error: task not found" + e.getMessage());
         }
    }
 
-   public void Start(){     //print greetings
+   public void Start() {     //print greetings
        System.out.println("Hello from " + ChatBotName);
        System.out.println("What can I do for you?");
    }
 
-   public void waitForCommand() throws EmptyTimeException, WrongHeadingException{       //loop that waits for command
+   public void waitForCommand() throws EmptyTimeException, WrongHeadingException {       //loop that waits for command
        Scanner scanner = new Scanner(System.in);
        String temp = null;
        TaskList tasks = new TaskList();
@@ -90,7 +90,7 @@ public class Ui {
                System.out.println(
                        tasks.getSize() + " tasks left");
 
-           }else{
+           } else {
                break;
            }
        }
