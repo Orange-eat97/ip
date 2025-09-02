@@ -17,6 +17,10 @@ public class Task {
         this.status = false;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     @Override
     public String toString() {
         String status = null;

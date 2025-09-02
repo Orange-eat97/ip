@@ -90,6 +90,12 @@ public class Ui {
                System.out.println(
                        tasks.getSize() + " tasks left");
 
+           } else if (actionCode == 8) {
+               String name = parser.handleFind(8, temp);
+               Task[] finds = tasks.findWord(name);
+               for(int i = 0; i < finds.length; i++) {
+                   System.out.println(finds[i].toString());
+               }
            } else {
                break;
            }

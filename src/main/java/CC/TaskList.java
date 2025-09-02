@@ -36,6 +36,12 @@ public class TaskList {
         tasks.remove(index);
     }
 
+    public Task[] findWord(String s) {
+        return tasks.stream()
+                .filter(x->x.getName().contains(s))
+                .toArray(n -> new Task[n]);
+    }
+
     @Override
     public String toString() {
         String temp = "";
