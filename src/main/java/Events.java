@@ -1,17 +1,23 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
 public class Events extends Deadlines{
     private String Task;
-    private String Deadline;
-    private String Start;
+    private LocalDate Deadline;
+    private LocalDate Start;
 
     public Events(String Task, String Start, String Deadline){
         super(Task, Deadline);
-        this.Start= Start;
+        this.Deadline = LocalDate.parse(Deadline.trim());
         this.Task = Task;
-        this.Deadline = Deadline;
+        this.Start = LocalDate.parse(Start.trim());
     }
 
     @Override
     public String toString(){
-        return "[E]" + "[] " + this.Task.toString() + "(" + this.Start + " " + this.Deadline + ")";
+        String deadline = this.Deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        String start = this.Start.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return "[E]" + "[] " + this.Task.toString() + "(" + start + " " + deadline + ")";
     }
 }
