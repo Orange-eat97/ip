@@ -1,3 +1,5 @@
+package CC;
+
 public class Task {
     private boolean status;
     private String name;

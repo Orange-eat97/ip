@@ -1,1 +1,7 @@
 
+[T][ ]  run
+[T][ ]  read
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
