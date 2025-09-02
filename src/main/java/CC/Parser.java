@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Parser {
     private static final String stop = "bye";
-    private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list", "delete"};
+    private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list", "delete", "find"};
 
     public int getAction(String s) {    //controls how we parse the command
         if (Arrays.stream(commands).noneMatch(x->s.startsWith(x))) {
@@ -23,10 +23,12 @@ public class Parser {
             return 6;
         } else if (s.startsWith("delete")) {
             return 7;
+        } else if (s.startsWith("find")){
+            return 8;
         } else {
-            return 0;
+                return 0;
+            }
         }
-    }
 
     public String[] handleTaskAction(int x, String s) throws EmptyTimeException {     //controls parsing tasks
         String[] details = new String[3];
@@ -61,4 +63,15 @@ public class Parser {
         return index;
     }
 
-}
+    public String handleFind(int x, String s) {
+        String temp = null;
+        if(x == 8) {
+            temp = s.substring(4).trim();
+        }
+        else {
+
+        }
+        return temp;
+    }
+
+    }
