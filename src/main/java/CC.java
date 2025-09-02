@@ -6,6 +6,7 @@ import static java.util.Arrays.stream;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
 public class CC {
     private static final String FILE_PATH = "data" + File.separator + "duke.txt";
     private static void saveTaskToFile(Task task){
@@ -77,7 +78,7 @@ public class CC {
                         temp = null;
 
                     } else if (temp.startsWith("deadline")) {
-                        String[] details = temp.substring(9).split("/");
+                        String[] details = temp.substring(9).split("/by", 2);
 
                         if (details.length < 2) {
                             throw new EmptyTimeException();
@@ -91,11 +92,16 @@ public class CC {
                         temp = null;
 
                     } else if (temp.startsWith("event")) {
-                        String[] details = temp.substring(6).split("/");
-                        if (details.length < 3) {
+                        String[] details = temp.substring(6).split("/from", 2);
+                        if (details.length < 2) {
                             throw new EmptyTimeException();
                         }
-                        Events event = new Events(details[0], details[1], details[2]);
+                        String[] details2 = details[1].split("/to", 2);
+                        if (details2.length < 2) {
+                            throw new EmptyTimeException();
+                        }
+
+                        Events event = new Events(details[0], details2[0], details2[1]);
                         tasks.addTask(event);
                         System.out.println("added: " + event.toString() + "\n"
                                 + tasks.getSize() + " task now");
