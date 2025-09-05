@@ -25,6 +25,8 @@ public class Parser {
             return 7;
         } else if (s.startsWith("find")){
             return 8;
+        } else if (s.startsWith(stop)) {
+            return 9;
         } else {
                 return 0;
             }

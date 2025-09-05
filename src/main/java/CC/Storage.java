@@ -11,7 +11,7 @@ public class Storage {
         FILE_PATH = FILE_PATH;
     }
 
-    public void ensureDataFileExists() {     //checks that the Data file exists,if not, create one
+    public static void ensureDataFileExists() {     //checks that the Data file exists,if not, create one
         File folder = new File("data");
         if(!folder.exists()) {
             folder.mkdir();
