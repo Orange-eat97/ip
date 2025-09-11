@@ -13,7 +13,7 @@ public class CC {
         this.Ui = new Ui();
     }
 
-    public void run() throws EmptyTimeException, WrongHeadingException {        //gets CC bot in action
+    public void run() throws EmptyTimeException, WrongHeadingException, NoTaskException {        //gets CC bot in action
         Storage.ensureDataFileExists();
         Ui.start();
         Ui.waitForCommand();
@@ -32,7 +32,7 @@ public class CC {
         return Ui.startFxml();
     }
 
-    public static void main(String[] args) throws WrongHeadingException, EmptyTimeException {    //main method
+    public static void main(String[] args) throws WrongHeadingException, EmptyTimeException, NoTaskException {    //main method
         new CC("data/tasks.txt").run();
     }
 }
