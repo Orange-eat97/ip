@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Parser {
     private static final String stop = "bye";
-    private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list", "delete", "find"};
+    private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list", "delete", "find", "priority"};
 
     public int getAction(String s) {    //controls how we parse the command
         if (Arrays.stream(commands).noneMatch(x->s.startsWith(x))) {
@@ -27,8 +27,10 @@ public class Parser {
             return 8;
         } else if (s.startsWith(stop)) {
             return 9;
-        } else {
-                return 0;
+        } else if (s.startsWith("priority")){
+            return 10;
+        } else{
+            return 0;
         }
     }
 
@@ -73,6 +75,14 @@ public class Parser {
         }
         assert temp != null: "find only get called with valid string";
         return temp;
+    }
+
+    public String[] handlePriority(String s) throws EmptyTimeException {
+        String[] details = s.substring(9).split(" ");
+        if(details.length < 2 ){
+            throw new EmptyTimeException();
+        }
+        return details;
     }
 
     }

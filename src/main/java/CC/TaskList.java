@@ -36,6 +36,10 @@ public class TaskList {
         tasks.remove(index);
     }
 
+    public void addPriority(int index, int priority){
+        tasks.get(index).addPriority(priority);
+    }
+
     public Task[] findWord(String s) {
         return tasks.stream()
                 .filter(x->x.getName().contains(s))

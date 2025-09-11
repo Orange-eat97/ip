@@ -36,7 +36,7 @@ public class Ui {
                 + tasks.getSize() + " tasks now");
     }
 
-    public void waitForCommand() throws EmptyTimeException, WrongHeadingException {       //loop that waits for command
+    public void waitForCommand() throws EmptyTimeException, WrongHeadingException, NoTaskException {       //loop that waits for command
         Scanner scanner = new Scanner(System.in);
         String temp = null;
         TaskList tasks = new TaskList();
@@ -101,6 +101,15 @@ public class Ui {
                 for (int i = 0; i < finds.length; i++) {
                     System.out.println(finds[i].toString());
                 }
+            } else if (actionCode == 10) {
+                String[] index = parser.handlePriority(temp);
+                int taskIndex = Integer.parseInt(index[0]);
+                int priority = Integer.parseInt(index[1]);
+                if(taskIndex > tasks.getSize()){
+                    throw new NoTaskException();
+                }
+                tasks.addPriority(taskIndex, priority);
+                System.out.println(tasks.getTask(taskIndex).toString());
             } else {
                 break;
             }
@@ -113,7 +122,7 @@ public class Ui {
                 + tasks.getSize() + " task now";
     }
 
-    public String waitForCommandFxml(String input, TaskList tasks, Parser parser) throws EmptyTimeException, WrongHeadingException {       //loop that waits for command
+    public String waitForCommandFxml(String input, TaskList tasks, Parser parser) throws EmptyTimeException, WrongHeadingException, NoTaskException{       //loop that waits for command
         String temp = input;
 
         int actionCode = parser.getAction(temp);
@@ -174,6 +183,15 @@ public class Ui {
                 result = result + finds[i].toString();
             }
             return result;
+        } else if (actionCode == 10) {
+            String[] index = parser.handlePriority(temp);
+            int taskIndex = Integer.parseInt(index[0]) - 1;
+            int priority = Integer.parseInt(index[1]);
+            if(taskIndex > tasks.getSize()){
+                throw new NoTaskException();
+            }
+            tasks.addPriority(taskIndex, priority);
+            return tasks.getTask(taskIndex).toString();
         }
             return "Don't come back again";
         }
