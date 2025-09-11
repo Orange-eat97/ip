@@ -15,7 +15,7 @@ public class CC {
 
     public void run() throws EmptyTimeException, WrongHeadingException {        //gets CC bot in action
         Storage.ensureDataFileExists();
-        Ui.Start();
+        Ui.start();
         Ui.waitForCommand();
     }
 

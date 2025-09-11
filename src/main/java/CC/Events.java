@@ -8,11 +8,11 @@ public class Events extends Deadlines {
     private LocalDate Deadline;
     private LocalDate Start;
 
-    public Events(String Task, String Start, String Deadline) {
-        super(Task, Deadline);
-        this.Deadline = LocalDate.parse(Deadline.trim());
-        this.Task = Task;
-        this.Start = LocalDate.parse(Start.trim());
+    public Events(String Tsk, String Strt, String Ddl) {
+        super(Tsk, Ddl);
+        this.Deadline = LocalDate.parse(Ddl.trim());
+        this.Task = Tsk;
+        this.Start = LocalDate.parse(Strt.trim());
     }
 
     @Override
