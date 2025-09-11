@@ -29,7 +29,7 @@ public class CC {
     }
 
     public String getGreeting() {
-        return Ui.StartFxml();
+        return Ui.startFxml();
     }
 
     public static void main(String[] args) throws WrongHeadingException, EmptyTimeException {    //main method
