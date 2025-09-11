@@ -29,8 +29,8 @@ public class Parser {
             return 9;
         } else {
                 return 0;
-            }
         }
+    }
 
     public String[] handleTaskAction(int x, String s) throws EmptyTimeException {     //controls parsing tasks
         String[] details = new String[3];
@@ -62,6 +62,7 @@ public class Parser {
         } else if(x == 7) {
             index = Integer.parseInt(s.substring(6).trim());
         }
+        assert index != 0: "index will not be 0";
         return index;
     }
 
@@ -70,9 +71,7 @@ public class Parser {
         if(x == 8) {
             temp = s.substring(4).trim();
         }
-        else {
-
-        }
+        assert temp != null: "find only get called with valid string";
         return temp;
     }
 
