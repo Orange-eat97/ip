@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class Main extends Application {
 
-    private CC cc = new CC("data/duke.txt");
+    private CC cc = new CC("data/cc.txt");
 
     @Override
     public void start(Stage stage) {

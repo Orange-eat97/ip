@@ -46,6 +46,12 @@ public class TaskList {
                 .toArray(n -> new Task[n]);
     }
 
+    public int[] findWordIndices(String s){     //suggested by gpt4.1
+        return java.util.stream.IntStream.range(0, tasks.size())
+                .filter(i -> tasks.get(i).getName().contains(s))
+                .toArray();
+    }
+
     @Override
     public String toString() {
         String temp = "";

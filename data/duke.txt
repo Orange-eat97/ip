@@ -1,30 +1,23 @@
-
 [T][ ]  run
-[T][ ]  read
+[D][ ] run,(Dec 23 2025)
+[D][ ] run(Dec 02 2025)
+[D][ ] run(Feb 01 2025)
+[D][ ] run(Feb 01 2025)
+[E][] tong tong tong tong tong sahur(Feb 02 2025 Feb 03 2025)
+[E][] run(Feb 02 2025 Mar 03 2025)
 [T][ ]  run
+[E][] tong tong tong sahur(Feb 02 2025 Feb 03 2025)
+[D][ ] tong barhu(Feb 02 2025)
+[T][ ]  fly
 [T][ ]  run
+[T][ ]  run run
+[E][] run(Feb 02 2024 Feb 02 2026)
+[T][ ]  eat
+[T][ ]  fly
+[T][ ]  flyhigh
+[T][ ]  fly
+[T][ ]  fly high
+[T][ ]  eat
 [T][ ]  run
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run home
-[T][ ]  walk
-[T][ ]  run
-[T][ ]  run home
-[T][ ]  walk
-[T][ ]  run
-[T][ ]  walk
-[T][ ]  run home
-[T][ ]  run
-[T][ ]  run home
-[T][ ]  walk
-[T][ ]  run
-[T][ ]  walk
-[T][ ]  run h
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run
-[T][ ]  run
+[T][ ]  eat
+[T][ ]  run run

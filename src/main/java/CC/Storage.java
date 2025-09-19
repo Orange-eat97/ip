@@ -7,8 +7,8 @@ import java.io.IOException;
 public class Storage {
     private static String FILE_PATH;
 
-    public Storage(String F_P) {
-        this.FILE_PATH = F_P;
+    public Storage(String filepath) {
+        this.FILE_PATH = filepath;
     }
 
     public static void ensureDataFileExists() {     //checks that the Data file exists,if not, create one

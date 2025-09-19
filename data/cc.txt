@@ -1,0 +1,30 @@
+
+[T][ ]  run
+[T][ ]  read
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run home
+[T][ ]  walk
+[T][ ]  run
+[T][ ]  run home
+[T][ ]  walk
+[T][ ]  run
+[T][ ]  walk
+[T][ ]  run home
+[T][ ]  run
+[T][ ]  run home
+[T][ ]  walk
+[T][ ]  run
+[T][ ]  walk
+[T][ ]  run h
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run
+[T][ ]  run

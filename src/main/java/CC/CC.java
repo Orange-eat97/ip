@@ -2,7 +2,7 @@ package CC;
 
 
 public class CC {
-    private String FILE_PATH;
+    //private String FILE_PATH; delete suggested by chatgpt4.1, as a part of deletion of unused information
     private final Ui Ui;
     private final Storage storage;
     private final TaskList tasks = new TaskList();

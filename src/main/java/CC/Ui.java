@@ -150,7 +150,7 @@ public class Ui {
                 Events event = new Events(details[0], details[1], details[2]);
                 tasks.addTask(event);
                 saveTaskToFile(event);
-                makeAddMessage(event, tasks);
+                return makeAddMessage(event, tasks);
             }
 
         } else if (actionCode == 4) {
@@ -175,14 +175,14 @@ public class Ui {
                     + deletedTask + "\n"
                     + tasks.getSize() + " tasks left";
 
-        } else if (actionCode == 8) {
+        } else if (actionCode == 8) {       //suggested by GPT4.1
             String name = parser.handleFind(8, temp);
-            Task[] finds = tasks.findWord(name);
-            String result = "";
-            for (int i = 0; i < finds.length; i++) {
-                result = result + finds[i].toString();
+            int[] indices = tasks.findWordIndices(name);
+            StringBuilder result = new StringBuilder();
+            for (int idx : indices) {
+                result.append(idx+1).append(". ").append(tasks.getTask(idx).toString()).append("\n");
             }
-            return result;
+            return result.toString();
         } else if (actionCode == 10) {
             String[] index = parser.handlePriority(temp);
             int taskIndex = Integer.parseInt(index[0]) - 1;
