@@ -21,3 +21,17 @@
 [T][ ]  run
 [T][ ]  eat
 [T][ ]  run run
+[T][ ]  run
+[E][ ] run more(Dec 11 2025 Apr 01 2026)
+[T][ ]  run
+[E][ ] run more(2月 02 2024 2月 03 2025)
+[D][ ] run(2月 02 2025)
+[E][ ] run more( fromFeb 02 2025 to Feb 01 2025)
+[E][ ] run more( from Feb 02 2025 to Mar 03 2025)
+[T][ ]  run
+[T][ ]  run
+[T][ ]  eat wombat
+[T][ ]  fly
+[D][ ] run( bySep 19 2025 )
+[T][ ]  run
+[D][ ] run more( by Feb 02 2025 )
