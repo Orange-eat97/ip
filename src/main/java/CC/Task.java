@@ -1,22 +1,22 @@
 package CC;
 
 public class Task {
-    private boolean status;
+    private boolean isDone;
     private String name;
     private int priority;
 
     public Task(String name) {       //constructor for Task
-        this.status = false;
+        this.isDone = false;
         this.name = name;
         this.priority = 0;
     }
 
     public void MarkAsDone() {       //toggles task status to done
-        this.status = true;
+        this.isDone = true;
     }
 
     public void MarkAsUndone() {          //toggles task status to undone
-        this.status = false;
+        this.isDone = false;
     }
 
     public String getName(){
@@ -31,7 +31,7 @@ public class Task {
     public String toString() {
         String status = null;
         String msg = null;
-        if(this.status == true) {
+        if(this.isDone == true) {
             status = "X";
         } else {
             status = " ";
