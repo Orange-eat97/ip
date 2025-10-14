@@ -1,4 +1,15 @@
-package CC;
+package com.cc.ui;
+
+import com.cc.exceptions.EmptyTimeException;
+import com.cc.exceptions.NoTaskException;
+import com.cc.exceptions.WrongHeadingException;
+import com.cc.parsers.Parser;
+import com.cc.TaskList;
+import com.cc.tasks.Deadlines;
+import com.cc.tasks.Events;
+import com.cc.tasks.Task;
+import com.cc.tasks.ToDos;
+import com.cc.Storage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,13 +17,21 @@ import java.io.IOException;
 import java.lang.System;
 import java.util.Scanner;
 
+/**
+ * Ui class handles the interaction with users, and executes the actual tasks
+ */
 public class Ui {
-    private static final String ChatBotName = "CC";
+    private static final String ChatBotName = "com/cc";
     private static final String stop = "bye";
     private static final String[] commands = {"todo", "event", "deadline", "mark", "unmark", "list"};
     private static final String FILE_PATH = "data" + File.separator + "duke.txt";
 
-    private static void saveTaskToFile(Task task) {
+    /**
+     * function that saves tasks to tasklist
+     *
+     * @param task the task that is to be saved
+     */
+    /*private static void saveTaskToFile(Task task) {
         try {
             FileWriter writer = new FileWriter(FILE_PATH, true);
             writer.write(task.toString() + System.lineSeparator());
@@ -20,22 +39,42 @@ public class Ui {
         } catch (IOException e) {
             System.out.println("Error: task not found" + e.getMessage());
         }
-    }
+    }*/
 
+    /**
+     * abstraction for opening greeting, for CLI mode
+     */
     public void start() {     //print greetings
         System.out.println("Hello from " + ChatBotName);
         System.out.println("What can I do for you?");
     }
 
+    /**
+     * abstraction for opening greeting, for fxml mode
+     * @return String of opening greetings
+     */
     public String startFxml() {     //print greetings
         return "Hello from " + ChatBotName + "\n" + "What can I do for you?";
     }
 
-    public void printAddMessage(Task task, TaskList tasks){     //print message when adding a task
+    /**
+     * abstraction for printing the messages of adding task in CLI mode
+     *
+     * @param task task to be added
+     * @param tasks tasklist to get number of tasks in the list
+     */
+    public void printAddMessage(Task task, TaskList tasks){
         System.out.println("added: " + task.toString() + "\n"
                 + tasks.getSize() + " tasks now");
     }
 
+    /**
+     * loop for taking action in the CLI mode
+     *
+     * @throws EmptyTimeException
+     * @throws WrongHeadingException
+     * @throws NoTaskException
+     */
     public void waitForCommand() throws EmptyTimeException, WrongHeadingException, NoTaskException {       //loop that waits for command
         Scanner scanner = new Scanner(System.in);
         String temp = null;
@@ -56,21 +95,21 @@ public class Ui {
                     ToDos todo = new ToDos(details[0]);
                     tasks.addTask(todo);
                     printAddMessage(todo, tasks);
-                    saveTaskToFile(todo);
+                    Storage.saveTaskToFile(todo);
                     temp = null;
 
                 } else if (actionCode == 2) {
                     Deadlines deadline = new Deadlines(details[0], details[1]);
                     tasks.addTask(deadline);
                     printAddMessage(deadline, tasks);
-                    saveTaskToFile(deadline);
+                    Storage.saveTaskToFile(deadline);
                     temp = null;
 
                 } else if (actionCode == 3) {
                     Events event = new Events(details[0], details[1], details[2]);
                     tasks.addTask(event);
                     printAddMessage(event, tasks);
-                    saveTaskToFile(event);
+                    Storage.saveTaskToFile(event);
                     temp = null;
                 }
 
@@ -117,11 +156,29 @@ public class Ui {
         System.out.println("Don't come back again");
     }
 
+    /**
+     * add message for fxml mode
+     *
+     * @param task being added
+     * @param tasks tasklist to get remaining numbers
+     * @return a string of add message
+     */
     public String makeAddMessage(Task task, TaskList tasks){
         return "added: " + task.toString() + "\n"
                 + tasks.getSize() + " task now";
     }
 
+    /**
+     * loop for fxml mode dialogue box
+     *
+     * @param input String of user input
+     * @param tasks TaskList that users operates on
+     * @param parser parser for extracting information from commands
+     * @return String of response from CC bot that is to be printed in the dialogue box
+     * @throws EmptyTimeException
+     * @throws WrongHeadingException
+     * @throws NoTaskException
+     */
     public String waitForCommandFxml(String input, TaskList tasks, Parser parser) throws EmptyTimeException, WrongHeadingException, NoTaskException{       //loop that waits for command
         String temp = input;
 
@@ -135,21 +192,21 @@ public class Ui {
             if (actionCode == 1) {
                 ToDos todo = new ToDos(details[0]);
                 tasks.addTask(todo);
-                saveTaskToFile(todo);
+                Storage.saveTaskToFile(todo);
                 return makeAddMessage(todo, tasks);
 
 
             } else if (actionCode == 2) {
                 Deadlines deadline = new Deadlines(details[0], details[1]);
                 tasks.addTask(deadline);
-                saveTaskToFile(deadline);
+                Storage.saveTaskToFile(deadline);
                 return makeAddMessage(deadline, tasks);
 
 
             } else if (actionCode == 3) {
                 Events event = new Events(details[0], details[1], details[2]);
                 tasks.addTask(event);
-                saveTaskToFile(event);
+                Storage.saveTaskToFile(event);
                 return makeAddMessage(event, tasks);
             }
 

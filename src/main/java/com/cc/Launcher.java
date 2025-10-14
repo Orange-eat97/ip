@@ -1,4 +1,4 @@
-package CC;
+package com.cc;
 
 import javafx.application.Application;
 

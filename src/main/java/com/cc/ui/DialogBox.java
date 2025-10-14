@@ -1,4 +1,4 @@
-package CC;
+package com.cc.ui;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

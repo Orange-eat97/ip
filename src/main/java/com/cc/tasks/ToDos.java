@@ -1,4 +1,4 @@
-package CC;
+package com.cc.tasks;
 
 public class ToDos extends Task {
     private String task;

@@ -1,5 +1,8 @@
-package CC;
+package com.cc.ui;
 
+import com.cc.CC;
+import com.cc.exceptions.EmptyTimeException;
+import com.cc.exceptions.WrongHeadingException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;

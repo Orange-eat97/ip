@@ -9,8 +9,8 @@ CC bot supports these functions:
 
 Adds a _"todo"_ task to your tasklist. 
 
-*Todo task has no deadline, no start, free and easy. 
-*Once added successfully, CC tells you how many tasks you have right now, also the entry of the task, with its type and completion status. 
+1. Todo task has no deadline, no start, free and easy.
+2. Once added successfully, CC tells you how many tasks you have right now, also the entry of the task, with its type and completion status. 
 
 Example: 
 
@@ -24,10 +24,11 @@ todo run
 
 Adds a _"deadline"_ task to your tasklist. 
 
-*Deadline task has a deadline, no start. 
-*Various date formats are supported,such as DD-MM-YYYY, DD/MM/YYYY, but not alphabetical input, such as "12 Dec 2025". 
-*Once added successfully, CC tells you how many tasks you have right now, also the entry of the task, with its type and completion status. 
-*If invalid date format is provided, CC asks you "Where got time?"
+1. Deadline task has a deadline, no start. 
+2. Various date formats are supported,such as DD-MM-YYYY, DD/MM/YYYY, but not alphabetical input, such as "12 Dec 2025". 
+3. Inputs for date and month, even if they are represented by 1 digit, should be 2 digits long, such as "02-20-2025".
+4. Once added successfully, CC tells you how many tasks you have right now, also the entry of the task, with its type and completion status. 
+5. If invalid date format is provided, CC asks you "Where got time?"
 
 Example: 
 
@@ -41,10 +42,10 @@ deadline more run, by 19/9/2025
 
 Adds a _"event"_ task to your tasklist. 
 
-*Event task has a deadline and a start. 
-*Various date formats are supported,  such as DD-MM-YYYY, DD/MM/YYYY, but not alphabetical input, such as "12 Dec 2025".
-*Once added successfully, CC tells you how many tasks you have right now, also the entry of the task, with its type and completion status. 
-*If invalid date format is provided, CC asks you "Where got time?"
+1. Event task has a deadline and a start.
+2. Various date formats are supported,  such as DD-MM-YYYY, DD/MM/YYYY, but not alphabetical input, such as "12 Dec 2025".
+3. Once added successfully, CC tells you how many tasks you have right now, also the entry of the task, with its type and completion status. 
+4. If invalid date format is provided, CC asks you "Where got time?"
 
 Example: 
 
@@ -57,8 +58,8 @@ evnet more more run, from 2-12-2025, to 3/12/2025
 
 "list" returns all the task in your tasklist at the moment. 
 
-*Each task's type, and completion status is reflected. 
-*If you have added a priority to the task, it is also reflected.
+1. Each task's type, and completion status is reflected. 
+2. If you have added a priority to the task, it is also reflected.
 
 Example: 
 
@@ -91,7 +92,7 @@ magic magic it's gone:
 
 Mark and unmark toggle the completion status of each task. 
 
-*Tasks are identified by the serial number they are given in the tasklist.
+1. Tasks are identified by the serial number they are given in the tasklist.
 
 Example: 
 
@@ -110,7 +111,7 @@ Fine get it done soon:
 
 Lists all tasks including this word. 
 
-*Serial numbers are according to their numbers in the list, so you can use the serial number in unmark, mark directly.
+1. Serial numbers are according to their numbers in the list, so you can use the serial number in unmark, mark directly.
 
 Example: 
 ```
@@ -139,7 +140,7 @@ Example:
 
 ```
 
-##Known issues
+## Known issues
 1. When the command is not handled but also does not create an exception, CC would return an empty line. If this happens, just input your next command.
 
 

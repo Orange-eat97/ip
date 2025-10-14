@@ -1,9 +1,14 @@
-package CC;
+package com.cc;
+
+import com.cc.tasks.Task;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * class that interacts with storage. Contains the field of file-path
+ */
 public class Storage {
     private static String FILE_PATH;
 
@@ -11,6 +16,9 @@ public class Storage {
         this.FILE_PATH = filepath;
     }
 
+    /**
+     * abstraction of creating a storage file when CC is ran for the first time
+     */
     public static void ensureDataFileExists() {     //checks that the Data file exists,if not, create one
         File folder = new File("data");
         if(!folder.exists()) {

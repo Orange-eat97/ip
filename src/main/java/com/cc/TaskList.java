@@ -1,4 +1,6 @@
-package CC;
+package com.cc;
+
+import com.cc.tasks.Task;
 
 import java.util.ArrayList;
 
