@@ -27,21 +27,6 @@ public class Ui {
     private static final String FILE_PATH = "data" + File.separator + "duke.txt";
 
     /**
-     * function that saves tasks to tasklist
-     *
-     * @param task the task that is to be saved
-     */
-    /*private static void saveTaskToFile(Task task) {
-        try {
-            FileWriter writer = new FileWriter(FILE_PATH, true);
-            writer.write(task.toString() + System.lineSeparator());
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Error: task not found" + e.getMessage());
-        }
-    }*/
-
-    /**
      * abstraction for opening greeting, for CLI mode
      */
     public void start() {     //print greetings
@@ -119,20 +104,18 @@ public class Ui {
             } else if (actionCode == 5) {
                 int index = parser.handleMarkAndDelete(5, temp);
                 tasks.MarkAsDone(index - 1);
-                System.out.println("Nice! You got it boss: \n" + tasks.getTask(index - 1).toString());
+                System.out.println(makeMarkMessage(index - 1, tasks));
 
             } else if (actionCode == 6) {
                 int index = parser.handleMarkAndDelete(6, temp);
                 tasks.MarkAsUndone(index - 1);
-                System.out.println("Fine get it done soon: \n" + tasks.getTask(index - 1).toString());
+                System.out.println(makeUnmarkMessage(index - 1, tasks));
 
             } else if (actionCode == 7) {
                 int index = parser.handleMarkAndDelete(7, temp);
-                System.out.println(
-                        "magic magic it's gone: \n" + tasks.getTask(index - 1).toString());
+                String deletedTask = tasks.getTask(index - 1).toString();
                 tasks.deleteTask(index - 1);
-                System.out.println(
-                        tasks.getSize() + " tasks left");
+                System.out.println(makeDeleteMessage(tasks.getSize(), deletedTask));
 
             } else if (actionCode == 8) {
                 String name = parser.handleFind(8, temp);
@@ -149,11 +132,14 @@ public class Ui {
                 }
                 tasks.addPriority(taskIndex, priority);
                 System.out.println(tasks.getTask(taskIndex).toString());
+            } else if (actionCode == 9){
+                System.out.println("Don't come back again");
+                System.exit(0);
             } else {
-                break;
+                throw new WrongHeadingException();
             }
         }
-        System.out.println("Don't come back again");
+
     }
 
     /**
@@ -169,10 +155,45 @@ public class Ui {
     }
 
     /**
+     * mark message for fxml mode
+     *
+     * @param index position of task in tasklist
+     * @param tasks tasklist to get remaining numbers
+     * @return a string of add message
+     */
+    public String makeMarkMessage(int index, TaskList tasks){
+        return "Nice! You got it boss: \n" + tasks.getTask(index - 1).toString();
+    }
+
+    /**
+     * unmark message for fxml mode
+     *
+     * @param index position of task in tasklist
+     * @param tasks tasklist to get remaining numbers
+     * @return a string of add message
+     */
+    public String makeUnmarkMessage(int index, TaskList tasks){
+        return "Fine get it done soon: \n" + tasks.getTask(index - 1).toString();
+    }
+
+    /**
+     * delete message for fxml mode
+     *
+     * @param size size of task in tasklist
+     * @param deletedTask String of deleted task
+     * @return a string of add message
+     */
+    public String makeDeleteMessage(int size, String deletedTask){
+        return "magic magic it's gone: \n"
+                + deletedTask + "\n"
+                + size + " tasks left";
+    }
+
+    /**
      * loop for fxml mode dialogue box
      *
      * @param input String of user input
-     * @param tasks TaskList that users operates on
+     * @param tasks TaskList that users operate on
      * @param parser parser for extracting information from commands
      * @return String of response from CC bot that is to be printed in the dialogue box
      * @throws EmptyTimeException
@@ -216,21 +237,20 @@ public class Ui {
         } else if (actionCode == 5) {
             int index = parser.handleMarkAndDelete(5, temp);
             tasks.MarkAsDone(index - 1);
-            return "Nice! You got it boss: \n" + tasks.getTask(index - 1).toString();
+            return makeMarkMessage(index, tasks);
 
         } else if (actionCode == 6) {
             int index = parser.handleMarkAndDelete(6, temp);
             tasks.MarkAsUndone(index - 1);
-            return "Fine get it done soon: \n" + tasks.getTask(index - 1).toString();
+            return makeUnmarkMessage(index, tasks);
 
         } else if (actionCode == 7) {
             int index = parser.handleMarkAndDelete(7, temp);
             String deletedTask = tasks.getTask(index - 1).toString();
             tasks.deleteTask(index - 1);
+            int newSize = tasks.getSize();
 
-            return "magic magic it's gone: \n"
-                    + deletedTask + "\n"
-                    + tasks.getSize() + " tasks left";
+            return makeDeleteMessage(newSize, deletedTask);
 
         } else if (actionCode == 8) {       //suggested by GPT4.1
             String name = parser.handleFind(8, temp);
@@ -240,6 +260,7 @@ public class Ui {
                 result.append(idx+1).append(". ").append(tasks.getTask(idx).toString()).append("\n");
             }
             return result.toString();
+
         } else if (actionCode == 10) {
             String[] index = parser.handlePriority(temp);
             int taskIndex = Integer.parseInt(index[0]) - 1;
@@ -249,7 +270,10 @@ public class Ui {
             }
             tasks.addPriority(taskIndex, priority);
             return tasks.getTask(taskIndex).toString();
-        }
+
+        } else if ( actionCode == 9) {
             return "Don't come back again";
+        }
+        return "Don't come back again";
         }
     }
